@@ -1,0 +1,814 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kaviin P | Portfolio</title>
+
+<style>
+:root {
+    --accent: #e5202e;
+    --accent-soft: rgba(229,32,46,0.15);
+    --bg: #0b0b0d;
+    --card: #17171c;
+    --text: #ffffff;
+    --muted: #aaaaaf;
+    --border: rgba(255,255,255,0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: Arial, sans-serif;
+    line-height: 1.7;
+    transition: background .3s, color .3s;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(11,11,13,.95);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--border);
+}
+
+nav {
+    max-width: 1150px;
+    margin: auto;
+    padding: 15px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: var(--accent);
+}
+
+.nav-links {
+    display: flex;
+    gap: 17px;
+    flex-wrap: wrap;
+}
+
+.nav-links a {
+    color: var(--muted);
+    font-size: 14px;
+    transition: .3s;
+}
+
+.nav-links a:hover {
+    color: var(--accent);
+}
+
+/* THEME SELECTOR */
+
+.theme-selector {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.theme-selector span {
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.theme-btn {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid white;
+    cursor: pointer;
+    transition: transform .2s;
+}
+
+.theme-btn:hover {
+    transform: scale(1.2);
+}
+
+.theme-btn.active {
+    outline: 2px solid white;
+    outline-offset: 3px;
+}
+
+/* MAIN CONTENT */
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 0 25px;
+}
+
+.hero {
+    min-height: 75vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 75px 0;
+    animation: fadeUp 1s ease;
+}
+
+.tag {
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.hero h1 {
+    font-size: clamp(45px, 8vw, 85px);
+    line-height: 1.1;
+    margin: 15px 0;
+}
+
+.hero h1 span {
+    color: var(--accent);
+}
+
+.hero p {
+    max-width: 750px;
+    color: var(--muted);
+    font-size: 18px;
+    margin-top: 12px;
+}
+
+.buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 28px;
+}
+
+.btn {
+    padding: 11px 22px;
+    border-radius: 30px;
+    background: var(--accent);
+    border: 1px solid var(--accent);
+    color: white;
+    font-weight: bold;
+    transition: .3s;
+}
+
+.btn:hover {
+    transform: translateY(-4px);
+    opacity: .85;
+}
+
+.btn-outline {
+    background: transparent;
+    color: white;
+}
+
+section {
+    padding: 65px 0;
+    border-top: 1px solid var(--border);
+    scroll-margin-top: 100px;
+}
+
+.section-number {
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+section h2 {
+    font-size: 35px;
+    margin: 8px 0 25px;
+}
+
+.description {
+    color: var(--muted);
+    max-width: 800px;
+    margin-bottom: 25px;
+}
+
+/* CARDS */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    padding: 24px;
+    transition: .3s;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent);
+}
+
+.card h3 {
+    margin-bottom: 10px;
+}
+
+.card p, .card li {
+    color: var(--muted);
+}
+
+.card ul {
+    padding-left: 20px;
+    margin-top: 10px;
+}
+
+.card li {
+    margin-bottom: 8px;
+}
+
+.highlight {
+    color: var(--accent);
+    font-weight: bold;
+    font-size: 13px;
+}
+
+/* SKILLS */
+
+.skill-group {
+    margin-bottom: 15px;
+}
+
+.skill-group h3 {
+    color: var(--accent);
+    font-size: 17px;
+}
+
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-top: 13px;
+}
+
+.chip {
+    padding: 6px 12px;
+    border: 1px solid var(--border);
+    border-radius: 25px;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    padding: 30px;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+}
+
+/* ANIMATION */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.reveal {
+    animation: fadeUp .8s ease both;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media(max-width: 750px) {
+    nav {
+        justify-content: center;
+    }
+
+    .nav-links {
+        justify-content: center;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        min-height: auto;
+        padding: 65px 0;
+    }
+
+    section h2 {
+        font-size: 28px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<nav>
+    <a href="#home" class="logo">KAVIIN<span>.</span></a>
+
+    <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+    <div class="theme-selector">
+        <span>Theme</span>
+        <button class="theme-btn active" style="background:#e5202e"
+            onclick="setTheme('red',this)" aria-label="Red"></button>
+        <button class="theme-btn" style="background:#3988ff"
+            onclick="setTheme('blue',this)" aria-label="Blue"></button>
+        <button class="theme-btn" style="background:#20b879"
+            onclick="setTheme('green',this)" aria-label="Green"></button>
+        <button class="theme-btn" style="background:#a879ff"
+            onclick="setTheme('purple',this)" aria-label="Purple"></button>
+        <button class="theme-btn" style="background:#d9a52b"
+            onclick="setTheme('gold',this)" aria-label="Gold"></button>
+    </div>
+</nav>
+</header>
+
+<main class="container">
+
+<!-- HOME -->
+
+<div class="hero" id="home">
+    <div class="tag">Computer Science & Engineering Graduate</div>
+
+    <h1>Hello, I'm <span>Kaviin P</span></h1>
+
+    <p>
+        Project Developer | AI & Data Quality Trainee |
+        Software Testing Enthusiast
+    </p>
+
+    <p>
+        A Computer Science graduate with experience in developing,
+        testing and documenting web, IoT and blockchain projects.
+        IEEE Xplore research paper co-author, interested in software
+        quality, data operations and technology solutions.
+    </p>
+
+    <div class="buttons">
+        <a href="#projects" class="btn">Explore Projects</a>
+        <a href="Kaviin_Resume.pdf" class="btn btn-outline" target="_blank">
+            Download Resume
+        </a>
+    </div>
+</div>
+
+<!-- ABOUT -->
+
+<section id="about">
+    <div class="section-number">01 / ABOUT ME</div>
+    <h2>About Me</h2>
+
+    <p class="description">
+        I am a Computer Science and Engineering graduate with practical
+        experience in project development, debugging, manual testing,
+        functional testing and technical documentation.
+        I have worked on more than 10 projects involving Java, Python,
+        Web Development, IoT and Blockchain technologies.
+    </p>
+
+    <div class="grid">
+        <div class="card">
+            <h3>Development</h3>
+            <p>
+                Interested in building practical applications,
+                solving technical problems and developing
+                technology-based solutions.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Quality & Documentation</h3>
+            <p>
+                Experience in testing, identifying errors,
+                preparing technical documents, project reports
+                and presentations.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- EXPERIENCE -->
+
+<section id="experience">
+    <div class="section-number">02 / EXPERIENCE</div>
+    <h2>Experience & Training</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <div class="highlight">AI DATA QUALITY ANALYST TRAINING</div>
+            <h3>DB Tech with Accenture</h3>
+            <p>Kilpauk, Chennai</p>
+
+            <ul>
+                <li>Shortlisted for the AI Data Quality Analyst Skill Training Program.</li>
+                <li>Learning AI fundamentals, data annotation, data labelling, data validation and data cleaning.</li>
+                <li>Developing skills in data accuracy, data consistency and quality assurance.</li>
+                <li>Gaining knowledge of Excel and AI-based data handling.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <div class="highlight">2025 – 2026</div>
+            <h3>Freelance Project Developer & Technical Documentation Specialist</h3>
+
+            <ul>
+                <li>Developed and supported 10+ projects using Java, Python, Web, IoT and Blockchain.</li>
+                <li>Handled development, debugging, testing and deployment.</li>
+                <li>Prepared technical documentation, reports, presentations and research papers.</li>
+                <li>Coordinated with clients and delivered project demonstrations.</li>
+            </ul>
+        </div>
+
+    </div>
+</section>
+
+<!-- SKILLS -->
+
+<section id="skills">
+    <div class="section-number">03 / SKILLS</div>
+    <h2>Technical Skills</h2>
+
+    <div class="grid">
+
+        <div class="card skill-group">
+            <h3>AI & Data Quality</h3>
+            <div class="chips">
+                <span class="chip">AI Fundamentals</span>
+                <span class="chip">Data Annotation</span>
+                <span class="chip">Data Labelling</span>
+                <span class="chip">Data Validation</span>
+                <span class="chip">Data Cleaning</span>
+                <span class="chip">Data Quality Assurance</span>
+                <span class="chip">Data Accuracy</span>
+                <span class="chip">Data Consistency</span>
+                <span class="chip">Data Integrity</span>
+                <span class="chip">Error Identification</span>
+                <span class="chip">Quality Checks</span>
+            </div>
+        </div>
+
+        <div class="card skill-group">
+            <h3>Testing & Quality</h3>
+            <div class="chips">
+                <span class="chip">Manual Testing</span>
+                <span class="chip">Functional Testing</span>
+                <span class="chip">Test Case Design</span>
+                <span class="chip">Bug Reporting</span>
+                <span class="chip">SDLC</span>
+                <span class="chip">STLC</span>
+                <span class="chip">Agile</span>
+            </div>
+        </div>
+
+        <div class="card skill-group">
+            <h3>Data & Office Tools</h3>
+            <div class="chips">
+                <span class="chip">MS Excel</span>
+                <span class="chip">Power BI</span>
+                <span class="chip">MySQL</span>
+                <span class="chip">Data Analysis</span>
+            </div>
+        </div>
+
+        <div class="card skill-group">
+            <h3>Programming & Web</h3>
+            <div class="chips">
+                <span class="chip">Java</span>
+                <span class="chip">Python</span>
+                <span class="chip">SQL</span>
+                <span class="chip">HTML</span>
+                <span class="chip">CSS</span>
+                <span class="chip">GitHub</span>
+                <span class="chip">VS Code</span>
+                <span class="chip">Eclipse</span>
+            </div>
+        </div>
+
+        <div class="card skill-group">
+            <h3>IoT & Blockchain</h3>
+            <div class="chips">
+                <span class="chip">ESP8266</span>
+                <span class="chip">ESP32</span>
+                <span class="chip">PIR Sensors</span>
+                <span class="chip">Ethereum</span>
+                <span class="chip">IPFS / Filebase</span>
+                <span class="chip">MetaMask</span>
+                <span class="chip">Truffle</span>
+                <span class="chip">Ganache</span>
+                <span class="chip">ASCON</span>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- PROJECTS -->
+
+<section id="projects">
+    <div class="section-number">04 / MY WORK</div>
+    <h2>Projects</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <div class="highlight">2026 · FIRST PLACE</div>
+            <h3>Smart Hospital – Digital OPD Registration & Queue Management System</h3>
+
+            <p>
+                Developed and deployed a QR-code-based OPD registration
+                and queue management website to reduce manual registration
+                and patient waiting time.
+            </p>
+
+            <p><strong>Achievement:</strong> First Place in a Digital India competition.</p>
+
+            <div class="chips">
+                <span class="chip">QR Code</span>
+                <span class="chip">Web Development</span>
+                <span class="chip">GitHub</span>
+                <span class="chip">Render</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="highlight">2025 – 2026</div>
+            <h3>Blood Bank Transparency System Using Blockchain & Decentralized Storage</h3>
+
+            <p>
+                Designed and developed a blockchain-based blood bank
+                system using smart contracts, decentralized storage
+                and ASCON encryption. Performed functional testing
+                and project demonstrations.
+            </p>
+
+            <div class="chips">
+                <span class="chip">Solidity</span>
+                <span class="chip">Ethereum</span>
+                <span class="chip">Truffle</span>
+                <span class="chip">Ganache</span>
+                <span class="chip">React.js</span>
+                <span class="chip">IPFS</span>
+                <span class="chip">MetaMask</span>
+                <span class="chip">ASCON</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="highlight">2024 · IoT</div>
+            <h3>Motion Detection Alert System</h3>
+
+            <p>
+                Developed a real-time motion detection and alert system
+                and tested hardware and software integration.
+            </p>
+
+            <div class="chips">
+                <span class="chip">Python</span>
+                <span class="chip">Flask</span>
+                <span class="chip">ESP8266</span>
+                <span class="chip">PIR Sensor</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="highlight">2023 · WEB APPLICATION</div>
+            <h3>Online Forum Discussions Platform</h3>
+
+            <p>
+                Developed a multi-user discussion platform with
+                authentication and session management.
+            </p>
+
+            <div class="chips">
+                <span class="chip">Java Servlets</span>
+                <span class="chip">MySQL</span>
+                <span class="chip">HTML</span>
+                <span class="chip">CSS</span>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- EDUCATION -->
+
+<section id="education">
+    <div class="section-number">05 / EDUCATION</div>
+    <h2>Education</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <div class="highlight">2022 – 2026</div>
+            <h3>B.E. Computer Science and Engineering</h3>
+            <p>Sathyabama Institute, Chennai</p>
+            <p><strong>CGPA: 7.87</strong></p>
+        </div>
+
+        <div class="card">
+            <div class="highlight">HIGHER SECONDARY · 12TH</div>
+            <h3>Maharishi Vidya Mandir Higher Secondary School</h3>
+            <p>Rasipuram</p>
+            <p><strong>Percentage: 74.4%</strong></p>
+        </div>
+
+    </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+
+<section id="certifications">
+    <div class="section-number">06 / CERTIFICATIONS</div>
+    <h2>Certifications</h2>
+
+    <div class="card">
+        <ul>
+            <li>IoT Smart Home Automation – Techknots Academy & Sathyabama University</li>
+            <li>AI with Python – SkillForage</li>
+            <li>Java Programming – NPTEL</li>
+            <li>Full Stack Web Development – ExcelR (July–October 2024)</li>
+            <li>MATLAB Onramp, Fundamentals, OOP & Programming Techniques – MathWorks</li>
+        </ul>
+    </div>
+</section>
+
+<!-- RESEARCH -->
+
+<section id="research">
+    <div class="section-number">07 / RESEARCH</div>
+    <h2>Research Publication</h2>
+
+    <div class="card">
+        <div class="highlight">ICAISS 2026 · IEEE XPLORE</div>
+
+        <h3>
+            Enhanced Blood Bank Transparency with Smart Contracts
+            And Decentralized Storage on Ethereum
+        </h3>
+
+        <p>Co-authored with Kavirajan K.</p>
+
+        <br>
+
+        <a class="btn"
+           href="https://ieeexplore.ieee.org/document/11526218"
+           target="_blank">
+            View IEEE Publication
+        </a>
+    </div>
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact">
+    <div class="section-number">08 / CONTACT</div>
+    <h2>Let's Connect</h2>
+
+    <p class="description">
+        Interested in opportunities involving software development,
+        data quality, testing and technology operations.
+    </p>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>Email</h3>
+            <a href="mailto:kaviin.cool02@gmail.com">
+                kaviin.cool02@gmail.com
+            </a>
+        </div>
+
+        <div class="card">
+            <h3>Phone</h3>
+            <a href="tel:+919677616067">
+                +91 9677616067
+            </a>
+        </div>
+
+        <div class="card">
+            <h3>LinkedIn</h3>
+            <a href="https://www.linkedin.com/" target="_blank">
+                Visit LinkedIn
+            </a>
+            <p>Replace with your actual LinkedIn profile URL.</p>
+        </div>
+
+        <div class="card">
+            <h3>GitHub</h3>
+            <a href="https://github.com/" target="_blank">
+                Visit GitHub
+            </a>
+            <p>Replace with your actual GitHub profile URL.</p>
+        </div>
+
+    </div>
+</section>
+
+</main>
+
+<footer>
+    © 2026 Kaviin P | All Rights Reserved
+</footer>
+
+<script>
+/* COLOUR THEME CHANGER */
+
+const themes = {
+    red: {
+        accent: "#e5202e",
+        soft: "rgba(229,32,46,0.15)"
+    },
+    blue: {
+        accent: "#3988ff",
+        soft: "rgba(57,136,255,0.15)"
+    },
+    green: {
+        accent: "#20b879",
+        soft: "rgba(32,184,121,0.15)"
+    },
+    purple: {
+        accent: "#a879ff",
+        soft: "rgba(168,121,255,0.15)"
+    },
+    gold: {
+        accent: "#d9a52b",
+        soft: "rgba(217,165,43,0.15)"
+    }
+};
+
+function setTheme(theme, button) {
+    const selected = themes[theme];
+
+    document.documentElement.style.setProperty(
+        "--accent", selected.accent
+    );
+
+    document.documentElement.style.setProperty(
+        "--accent-soft", selected.soft
+    );
+
+    document.querySelectorAll(".theme-btn").forEach(btn => {
+        btn.classList.remove("active");
+    });
+
+    if (button) {
+        button.classList.add("active");
+    }
+
+    localStorage.setItem("portfolioTheme", theme);
+}
+
+/* REMEMBER THE SELECTED THEME */
+
+window.addEventListener("DOMContentLoaded", () => {
+    const savedTheme = localStorage.getItem("portfolioTheme");
+
+    if (savedTheme && themes[savedTheme]) {
+        const button = [...document.querySelectorAll(".theme-btn")]
+            .find(btn => btn.getAttribute("aria-label").toLowerCase() === savedTheme);
+
+        setTheme(savedTheme, button);
+    }
+});
+</script>
+
+</body>
+</html>
